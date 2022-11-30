@@ -68,7 +68,7 @@
                 app:layout_constraintEnd_toStartOf="@id/playPause"
                 app:layout_constraintStart_toEndOf="@id/songTitle"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_media_previous" />
+                app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/playPause"
@@ -79,7 +79,7 @@
                 app:layout_constraintEnd_toStartOf="@id/next"
                 app:layout_constraintStart_toEndOf="@id/previous"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_media_play" />
+                app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/next"
@@ -90,7 +90,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/playPause"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@android:drawable/ic_media_next" />
+                app:srcCompat="@drawable/ic_baseline_skip_next_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.bottomappbar.BottomAppBar>
 

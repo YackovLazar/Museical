@@ -53,7 +53,7 @@ public class PlaceholderFragment extends Fragment {
         View root = binding.getRoot();
 
         final TextView textView = binding.sectionLabel;
-        pageViewModel.getText().observe(getViewLifecycleOwner(), s -> textView.setText(s));
+        pageViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 

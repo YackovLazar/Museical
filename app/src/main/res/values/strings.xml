@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Museical</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="tab_text_1">Songs</string>
+    <string name="tab_text_2">Albums</string>
+    <string name="tab_text_3">Artists</string>
+    <string name="tab_text_4">Genres</string>
     <string name="title_activity_player">player</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
