@@ -15,10 +15,9 @@ public class Mapper {
     private static enum itemType {SONG, ARTIST, ALBUM, GENRE}
 
     /**
-     * Imports songs into res folder, mapping them in the process
-     * @param dir Directory in which to look for songs.
+     * Create lists for Songs, Artists, Albums, and Genres that can then be queried
      */
-    public static void importSongs(String dir) {
+    public static void mapSongs() {
         MediaMetadataRetriever metadata = new MediaMetadataRetriever();
         String path, title;
         Album album;
@@ -27,9 +26,10 @@ public class Mapper {
         String[] genresParsed, artistsParsed;
         Song song;
 
-        // TODO Loop through every file, processing it if it is a music file
-        while () {  // There are still files in dir
-            if () continue; // If not a music file
+        // TODO Process every file
+        int i = 0;
+        while (i++ < 2) {  // There are still files in dir
+            if (i == 1) continue; // If not a music file
 
             // TODO Move file to res and get new path
             path = "";  // New path of song after being moved
@@ -118,7 +118,6 @@ public class Mapper {
             throw new IllegalArgumentException("Object isn't of class Song, Artist, Album, or Genre.");
         }
     }
-
 }
 /* MetaData Key:
     Genre - 6
