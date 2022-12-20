@@ -118,6 +118,7 @@ public class Mapper {
             throw new IllegalArgumentException("Object isn't of class Song, Artist, Album, or Genre.");
         }
     }
+
 }
 /* MetaData Key:
     Genre - 6
