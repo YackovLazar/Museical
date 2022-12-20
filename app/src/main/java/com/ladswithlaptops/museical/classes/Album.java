@@ -99,7 +99,8 @@ import java.util.LinkedList;
 }*/
 
 public class Album {
-    private String title, albumArt;  // FIXME: Refactor albumArt to proper datatype
+    private String title;
+    private Bitmap albumArt;
     private LinkedList<Artist> artists = new LinkedList<>();
     private LinkedList<Song> songs = new LinkedList<>();
     private short year;
@@ -113,7 +114,8 @@ public class Album {
     }
 
     public static class Builder {
-        private String title = "Unknown", albumArt = "Unknown";
+        private String title = "Unknown";
+        private Bitmap albumArt = null;
         private LinkedList<Artist> artists = new LinkedList<>();
         private LinkedList<Song> songs = new LinkedList<>();
         private short year = 0;
@@ -123,7 +125,7 @@ public class Album {
             return this;
         }
 
-        public Builder albumArt(String albumArt) {
+        public Builder albumArt(Bitmap albumArt) {
             this.albumArt = albumArt;
             return this;
         }
@@ -154,7 +156,7 @@ public class Album {
         return title;
     }
 
-    public String getAlbumArt() {
+    public Bitmap getAlbumArt() {
         return albumArt;
     }
 
