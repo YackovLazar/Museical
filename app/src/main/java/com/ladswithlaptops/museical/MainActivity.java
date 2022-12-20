@@ -20,7 +20,8 @@ import android.view.View;
 import com.ladswithlaptops.museical.databinding.ActivityMainBinding;
 import com.ladswithlaptops.museical.ui.main.SectionsPagerAdapter;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private ActivityMainBinding binding;
 

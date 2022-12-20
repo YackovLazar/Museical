@@ -1,19 +1,22 @@
 package com.ladswithlaptops.museical.classes;
 
+import android.graphics.Bitmap;
+
 import java.util.LinkedList;
 
 public class Album {
 
     //Data Fields:
 
-    private String name, albumArt;
+    private String name;
+    private Bitmap albumArt;
     private LinkedList<Artist> artists = new LinkedList<>();
     private LinkedList<Song> songs = new LinkedList<>();
     private short year;
 
     //Constructors:
 
-    public Album(String name, String albumArt, LinkedList<Artist> artists,
+    public Album(String name, Bitmap albumArt, LinkedList<Artist> artists,
                  LinkedList<Song> songs, short year) {
         this.name = name;
         this.albumArt = albumArt;
@@ -34,7 +37,7 @@ public class Album {
         return name;
     }
 
-    public String getAlbumArt() {
+    public Bitmap getAlbumArt() {
         return albumArt;
     }
 
