@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
             ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, songTitle, "transition_fab");
             Intent intent = new Intent(MainActivity.this, Player.class);
             startActivity(intent, options.toBundle());
-            Log.d("FAB", "onClick: CLICKED");
        });
     }
 }
