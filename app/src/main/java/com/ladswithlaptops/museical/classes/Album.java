@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 
 import java.util.LinkedList;
 
-public class Album {
+/*public class Album {
 
     //Data Fields:
 
@@ -96,4 +96,122 @@ public class Album {
         }
         return false;
     }
+}*/
+
+public class Album {
+    private String title, albumArt;  // FIXME: Refactor albumArt to proper datatype
+    private LinkedList<Artist> artists = new LinkedList<>();
+    private LinkedList<Song> songs = new LinkedList<>();
+    private short year;
+
+    private Album(Builder builder) {
+        this.title = builder.title;
+        this.albumArt = builder.albumArt;
+        this.artists = builder.artists;
+        this.songs = builder.songs;
+        this.year = builder.year;
+    }
+
+    public static class Builder {
+        private String title = "Unknown", albumArt = "Unknown";
+        private LinkedList<Artist> artists = new LinkedList<>();
+        private LinkedList<Song> songs = new LinkedList<>();
+        private short year = 0;
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder albumArt(String albumArt) {
+            this.albumArt = albumArt;
+            return this;
+        }
+
+        public Builder artists(LinkedList<Artist> artists) {
+            this.artists = artists;
+            return this;
+        }
+
+        public Builder songs(LinkedList<Song> songs) {
+            this.songs = songs;
+            return this;
+        }
+
+        public Builder year(short year) {
+            this.year = year;
+            return this;
+        }
+
+        public Album build() {
+            return new Album(this);
+        }
+    }
+
+    // Getters:
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAlbumArt() {
+        return albumArt;
+    }
+
+    public LinkedList<Artist> getArtists() {
+        return artists;
+    }
+
+    public LinkedList<Song> getSongs() {
+        return songs;
+    }
+
+    public short getYear() {
+        return year;
+    }
+
+    //Setters:
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setYear(short year) {
+        this.year = year;
+    }
+
+    // Add/Remove:
+
+    public boolean addArtist(Artist artist) {
+        if (! artists.contains(artist)) {
+            artists.add(artist);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addSong(Song song) {
+        if (! songs.contains(song)) {
+            songs.add(song);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeArtist(Artist artist) {
+        if (artists.contains(artist)) {
+            artists.remove(artist);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean removeSong(Song song) {
+        if (songs.contains(song)) {
+            songs.remove(song);
+            return true;
+        }
+        return false;
+    }
 }
+

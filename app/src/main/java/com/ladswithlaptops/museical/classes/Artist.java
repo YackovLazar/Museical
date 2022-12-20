@@ -20,7 +20,7 @@ public class Artist {
         this.name = name;
     }
 
-    //Getters:
+    // Getters:
 
     public String getName() {
         return name;
@@ -30,15 +30,15 @@ public class Artist {
         return songs;
     }
 
-    //Setters:
+    // Setters:
 
     public void setName(String name) {
         this.name = name;
     }
 
-    //Add/Remove:
+    // Add/Remove:
 
-    public boolean addSongs(Song song) {
+    public boolean addSong(Song song) {
         if (! songs.contains(song)) {
             songs.add(song);
             return true;
