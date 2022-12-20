@@ -116,7 +116,9 @@ public class Album {
         private short year = 0;
 
         public Builder title(String title) {
-            this.title = title;
+            title = title.trim();
+            if (!title.equals(""))
+                this.title = title;
             return this;
         }
 

@@ -48,7 +48,7 @@ public class Mapper {
             // Create Song
             song = new Song.Builder()
                     .path(path)
-                    .title(Objects.equals(title, "") ? "Unknown" : title)
+                    .title(title)
                     .artists(currArtists)
                     .album(album)
                     .genres(currGenres)

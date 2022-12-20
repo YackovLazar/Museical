@@ -76,7 +76,7 @@ public class Importer {
         }
     }
 
-    public static InputStream getRawFolder(Resources resources) throws IOException {
+    public static OutputStream getRawFolderOutputStream(Resources resources) throws IOException {
         // Get the resource ID for the raw folder
         int resId = resources.getIdentifier("raw", "raw", getPackageName());
         // Open the raw resource as an AssetFileDescriptor
@@ -84,7 +84,7 @@ public class Importer {
         // Get the ParcelFileDescriptor from the AssetFileDescriptor
         ParcelFileDescriptor pfd = afd.getParcelFileDescriptor();
         // Return the InputStream from the ParcelFileDescriptor
-        return new ParcelFileDescriptor.AutoCloseInputStream(pfd);
+        return new ParcelFileDescriptor.AutoCloseOutputStream(pfd);
     }
 
 }
