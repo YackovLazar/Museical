@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
             ActivityCompat.requestPermissions(this, STORAGE_PERMISSIONS, REQUEST_CODE_STORAGE_PERMISSIONS);
         } else {
             // Proceed with the import if the permissions have already been granted
-            int filesCopied = Importer.importMusic(this, "music_folder");
+            int filesCopied = Importer.moveFiles(this, "music_folder", "res/raw");
         }
     }
 
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         if (requestCode == REQUEST_CODE_STORAGE_PERMISSIONS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Proceed with the import if the read storage permission has been granted
-                int filesCopied = Importer.importMusic(this, "music_folder");
+                int filesCopied = Importer.moveFiles(this, "music_folder", "");
             } else {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                     // Show a message to the user explaining why the read storage permission is needed

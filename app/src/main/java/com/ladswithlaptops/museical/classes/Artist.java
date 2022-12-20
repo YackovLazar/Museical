@@ -1,5 +1,7 @@
 package com.ladswithlaptops.museical.classes;
 
+import com.rits.cloning.Cloner;
+
 import java.util.LinkedList;
 
 public class Artist {
@@ -23,11 +25,14 @@ public class Artist {
     // Getters:
 
     public String getName() {
-        return name;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(name);
+
     }
 
     public LinkedList<Song> getSongs() {
-        return songs;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(songs);
     }
 
     // Setters:
