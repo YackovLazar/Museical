@@ -33,7 +33,7 @@ public class SongsFragment extends Fragment
     {
         PlayerViewModel playerViewModel = new ViewModelProvider(this.requireActivity()).get(PlayerViewModel.class);
 
-        RecyclerView recyclerView = getView().findViewById(R.id.songs_recycler);
+       // RecyclerView recyclerView = getView().findViewById(R.id.songs_recycler); FIXME
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(playerViewModel.getSongs());
         
         return super.onCreateView(inflater, container, savedInstanceState);
