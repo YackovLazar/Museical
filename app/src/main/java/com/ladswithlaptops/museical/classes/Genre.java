@@ -1,5 +1,7 @@
 package com.ladswithlaptops.museical.classes;
 
+import com.rits.cloning.Cloner;
+
 import java.util.LinkedList;
 
 public class Genre {
@@ -23,11 +25,13 @@ public class Genre {
     //Getters:
 
     public String getName() {
-        return name;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(name);
     }
 
     public LinkedList<Song> getSongs() {
-        return songs;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(songs);
     }
 
     //Setters:
@@ -52,5 +56,18 @@ public class Genre {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Genre)) return false;
+        Genre genre = (Genre) o;
+        return name.equals(genre.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }

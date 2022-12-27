@@ -1,66 +1,101 @@
 package com.ladswithlaptops.museical.classes;
 
+import com.rits.cloning.Cloner;
 import java.util.LinkedList;
 
 public class Song {
-
-    //Data Fields:
-
-    private String filename, title;
+    private String path, title;
     private LinkedList<Artist> artists = new LinkedList<>();
     private Album album;
     private LinkedList<Genre> genres = new LinkedList<>();
     private short year;
 
-    //Constructors:
-
-    public Song(String filename, String title, LinkedList<Artist> artists,
-                Album album, LinkedList<Genre> genres, short year) {
-        this.filename = filename;
-        this.title = title;
-        this.artists = artists;
-        this.album = album;
-        this.genres = genres;
-        this.year = year;
+    private Song(Builder builder) {
+        this.path = builder.path;
+        this.title = builder.title;
+        this.artists = builder.artists;
+        this.album = builder.album;
+        this.genres = builder.genres;
+        this.year = builder.year;
     }
 
-    public Song(String filename, String title) {
-        this.filename = filename;
-        this.title = title;
-        this.album = new Album("Unknown");
-        this.year = -1;
+    public static class Builder {
+        private String path = "Unknown", title = "Unknown";
+        private LinkedList<Artist> artists = new LinkedList<>();
+        private Album album = new Album.Builder().build();
+        private LinkedList<Genre> genres = new LinkedList<>();
+        private short year = 0;
+
+        public Builder path(String filename) {
+            this.path = filename;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder artists(LinkedList<Artist> artists) {
+            this.artists = artists;
+            return this;
+        }
+
+        public Builder album(Album album) {
+            this.album = album;
+            return this;
+        }
+
+        public Builder genres(LinkedList<Genre> genres) {
+            this.genres = genres;
+            return this;
+        }
+
+        public Builder year(short year) {
+            this.year = year;
+            return this;
+        }
+
+        public Song build() {
+            return new Song(this);
+        }
     }
 
-    //Getters:
+    // Getters:
 
-    public String getFilename() {
-        return filename;
+    public String getPath() {
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(path);
     }
 
     public String getTitle() {
-        return title;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(title);
     }
 
     public LinkedList<Artist> getArtists() {
-        return artists;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(artists);
     }
 
     public Album getAlbum() {
-        return album;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(album);
     }
 
     public LinkedList<Genre> getGenres() {
-        return genres;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(genres);
     }
 
     public short getYear() {
         return year;
     }
 
-    //Setters:
+    // Setters:
 
     public void rename(String filename, String title) {
-        this.filename = filename;
+        this.path = filename;
         this.title = title;
     }
 
@@ -72,7 +107,7 @@ public class Song {
         this.year = year;
     }
 
-    //Add/Remove:
+    // Add/Remove:
 
     public boolean addArtist(Artist artist) {
         if (! artists.contains(artist)) {
@@ -106,3 +141,4 @@ public class Song {
         return false;
     }
 }
+

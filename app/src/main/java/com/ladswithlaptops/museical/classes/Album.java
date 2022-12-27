@@ -1,49 +1,85 @@
 package com.ladswithlaptops.museical.classes;
 
+import android.graphics.Bitmap;
+
+import com.rits.cloning.Cloner;
+
 import java.util.LinkedList;
 
 public class Album {
-
-    //Data Fields:
-
-    private String name, albumArt;
+    private String title;
+    private Bitmap albumArt;
     private LinkedList<Artist> artists = new LinkedList<>();
     private LinkedList<Song> songs = new LinkedList<>();
     private short year;
 
-    //Constructors:
-
-    public Album(String name, String albumArt, LinkedList<Artist> artists,
-                 LinkedList<Song> songs, short year) {
-        this.name = name;
-        this.albumArt = albumArt;
-        this.artists = artists;
-        this.songs = songs;
-        this.year = year;
+    private Album(Builder builder) {
+        this.title = builder.title;
+        this.albumArt = builder.albumArt;
+        this.artists = builder.artists;
+        this.songs = builder.songs;
+        this.year = builder.year;
     }
 
-   public Album(String name) {
-       this.name = name;
-       this.albumArt = null;
-       this.year = -1;
-   }
+    public static class Builder {
+        private String title = "Unknown";
+        private Bitmap albumArt = null;
+        private LinkedList<Artist> artists = new LinkedList<>();
+        private LinkedList<Song> songs = new LinkedList<>();
+        private short year = 0;
 
-   //Getters:
+        public Builder title(String title) {
+            if (!(title == null || title.equals("")))
+                this.title = title;
+            return this;
+        }
 
-    public String getName() {
-        return name;
+        public Builder albumArt(Bitmap albumArt) {
+            this.albumArt = albumArt;
+            return this;
+        }
+
+        public Builder artists(LinkedList<Artist> artists) {
+            this.artists = artists;
+            return this;
+        }
+
+        public Builder songs(LinkedList<Song> songs) {
+            this.songs = songs;
+            return this;
+        }
+
+        public Builder year(short year) {
+            this.year = year;
+            return this;
+        }
+
+        public Album build() {
+            return new Album(this);
+        }
     }
 
-    public String getAlbumArt() {
-        return albumArt;
+    // Getters:
+
+    public String getTitle() {
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(title);        
+    }
+
+    public Bitmap getAlbumArt() {
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(albumArt);
     }
 
     public LinkedList<Artist> getArtists() {
-        return artists;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(artists);
+
     }
 
     public LinkedList<Song> getSongs() {
-        return songs;
+        Cloner cloner = new Cloner();
+        return cloner.deepClone(songs);
     }
 
     public short getYear() {
@@ -52,15 +88,15 @@ public class Album {
 
     //Setters:
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setYear(short year) {
         this.year = year;
     }
 
-    //Add/Remove:
+    // Add/Remove:
 
     public boolean addArtist(Artist artist) {
         if (! artists.contains(artist)) {
@@ -94,3 +130,4 @@ public class Album {
         return false;
     }
 }
+
