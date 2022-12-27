@@ -85,6 +85,7 @@
     </com.google.android.material.bottomappbar.BottomAppBar>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/songsView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
