@@ -11,10 +11,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.ladswithlaptops.museical.R;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> implements Serializable
+{
+
     private List<Song> mSongs;
+    private OnItemClickListener listener;
+
+    public interface OnItemClickListener
+    {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener)
+    {
+        this.listener = listener;
+    }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         public ImageView mAlbumArtImageView;
@@ -31,27 +46,38 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public RecyclerViewAdapter(List<Song> songs) {
+    public RecyclerViewAdapter(ArrayList<Song> songs)
+    {
         mSongs = songs;
     }
 
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+    {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.song_view, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        Song song = mSongs.get(position);
-        holder.mSongNameTextView.setText(song.getTitle());
-        holder.mArtistTextView.setText(song.getArtists().toString());
-        holder.mAlbumTextView.setText(song.getAlbum().getTitle());
+    public void onBindViewHolder(MyViewHolder holder, int position)
+    {
+        Song current = mSongs.get(holder.getAdapterPosition());
+        holder.mSongNameTextView.setText(current.getTitle());
+        holder.mArtistTextView.setText(current.getArtists().getFirst().getName());
+        holder.mAlbumTextView.setText(current.getAlbum().getTitle());
         // Load the album art into the ImageView using a library such as Glide
         Glide.with(holder.mAlbumArtImageView.getContext())
-                .load(song.getAlbum().getAlbumArt())
+                .load(current.getAlbum().getAlbumArt())
                 .into(holder.mAlbumArtImageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(holder.getAdapterPosition());
+
+            }
+        });
     }
 
     @Override

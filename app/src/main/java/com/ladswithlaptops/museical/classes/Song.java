@@ -1,17 +1,20 @@
 package com.ladswithlaptops.museical.classes;
 
+import androidx.annotation.NonNull;
+
 import com.rits.cloning.Cloner;
 import java.util.LinkedList;
 
 public class Song {
-    private String path, title;
+    private int resId;
+    private String title;
     private LinkedList<Artist> artists = new LinkedList<>();
     private Album album;
     private LinkedList<Genre> genres = new LinkedList<>();
     private short year;
 
     private Song(Builder builder) {
-        this.path = builder.path;
+        this.resId = builder.resId;
         this.title = builder.title;
         this.artists = builder.artists;
         this.album = builder.album;
@@ -20,15 +23,15 @@ public class Song {
     }
 
     public static class Builder {
-        private String path = "Unknown", title = "Unknown";
+        private int resId;
+        private String title = "Unknown";
         private LinkedList<Artist> artists = new LinkedList<>();
         private Album album = new Album.Builder().build();
         private LinkedList<Genre> genres = new LinkedList<>();
         private short year = 0;
 
-        public Builder path(String filename) {
-            this.path = filename;
-            return this;
+        public Builder(int id) {
+            this.resId = id;
         }
 
         public Builder title(String title) {
@@ -63,9 +66,8 @@ public class Song {
 
     // Getters:
 
-    public String getPath() {
-        Cloner cloner = new Cloner();
-        return cloner.deepClone(path);
+    public int getResId() {
+        return resId;
     }
 
     public String getTitle() {
@@ -94,8 +96,8 @@ public class Song {
 
     // Setters:
 
-    public void rename(String filename, String title) {
-        this.path = filename;
+    public void rename(int id, String title) {
+        this.resId = id;
         this.title = title;
     }
 

@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.ladswithlaptops.museical"
-        minSdk 26
+        minSdk 28
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -40,6 +40,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
     implementation 'io.github.kostaskougios:cloning:1.10.3'
+    implementation 'com.google.code.gson:gson:2.10'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
